@@ -4,21 +4,25 @@
     {
         static void Main(string[] args)
         {
-            string name;
-            string profession;
+            string name = "Jane";
+            int age = 28;
+            bool havePets = false;
+            float shoe_size = 37.5f;
 
-            Console.WriteLine("What's your name?");
-            name = Console.ReadLine();
+            Console.WriteLine("My name is {0} \n " +
+                "MyAge {1} \n " +
+                "Do I have a pet? {2} \n " +
+                "My shoe size is {3} ", name, age, havePets, shoe_size);
 
-            Console.WriteLine("Your occupation?");
-            profession = Console.ReadLine();
-
-            Greet(name, profession);
+            Console.ReadKey();
         }
 
+
+        /*
         static void Greet(string name, string profession)
         {
             Console.WriteLine("Hello, {0}, {1}.", name, profession);
         }
+        */
     }
 }
