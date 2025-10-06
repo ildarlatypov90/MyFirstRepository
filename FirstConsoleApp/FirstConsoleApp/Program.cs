@@ -16,13 +16,5 @@
 
             Console.ReadKey();
         }
-
-
-        /*
-        static void Greet(string name, string profession)
-        {
-            Console.WriteLine("Hello, {0}, {1}.", name, profession);
-        }
-        */
     }
 }
