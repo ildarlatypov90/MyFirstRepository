@@ -19,6 +19,8 @@
 
             static void Echo(string phrase, int deep)
             {
+                ConsoleColor color = (ConsoleColor)Enum.GetValues(typeof(ConsoleColor)).GetValue(deep);
+                Console.BackgroundColor = color;
                 Console.WriteLine(phrase);
 
                 if (deep > 1)
