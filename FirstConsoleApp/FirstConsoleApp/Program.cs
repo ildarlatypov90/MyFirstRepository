@@ -2,30 +2,30 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+        class MainClass
         {
-            (string Name, string[] Dishes) User;
-            int len = 5;
-
-            Console.WriteLine("Введите имя:");
-            User.Name = Console.ReadLine();
-
-            User.Dishes = new string[len];
-
-            for (int i = 0; i < User.Dishes.Length; i++)
+            static void Main(string[] args)
             {
-                Console.WriteLine("Введите любимое блюдо {0}:", i+1);
-                User.Dishes[i] = Console.ReadLine();
+                Console.WriteLine("Напишите что-то");
+                var str = Console.ReadLine();
+
+                Console.WriteLine("Укажите глубину эха");
+                var deep = int.Parse(Console.ReadLine());
+
+                Echo(str, deep);
+
+                Console.ReadKey();
             }
 
-            Console.ReadKey();
-        }
+            static void Echo(string phrase, int deep)
+            {
+                Console.WriteLine(phrase);
 
-        static string GetDataFromConsole() => Console.ReadLine();
-
-        int SumNumbers(ref int num1, in int num2, out int num3, int num4)
-        {
-
+                if (deep > 1)
+                {
+                    Echo(phrase, deep - 1);
+                }
+            }
         }
     }
 }   
