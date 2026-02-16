@@ -4,21 +4,32 @@
     {
         static void Main(string[] args)
         {
-            string name;
-            string profession;
+            int N;
+            byte pow;
 
-            Console.WriteLine("What's your name?");
-            name = Console.ReadLine();
+            Console.WriteLine("Ведите число которое необходимовозвети в степень:");
+            N = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("Your occupation?");
-            profession = Console.ReadLine();
+            Console.WriteLine("Введите степень, в которое необходимо возвести число(не более 255):");
+            pow = byte.Parse(Console.ReadLine());
 
-            Greet(name, profession);
+            Console.WriteLine(Program.PowerUp(N, pow));
+            Console.ReadLine();
         }
 
-        static void Greet(string name, string profession)
+        private static int PowerUp(int N, byte pow)
         {
-            Console.WriteLine("Hello, {0}, {1}.", name, profession);
+            int res = 1;
+            if (pow > 1)
+            {
+                res = N * Program.PowerUp(N, (byte)(pow-1));
+            }
+            else if (pow == 1)
+            {
+                res = N;
+            }
+
+            return res;
         }
     }
 }
