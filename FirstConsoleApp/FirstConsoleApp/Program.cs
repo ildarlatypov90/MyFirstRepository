@@ -4,32 +4,80 @@
     {
         static void Main(string[] args)
         {
-            int N;
-            byte pow;
+            (string name, string family, int age, bool isHavePet,
+                 int petCount, string[] petsNames, string[] colors) Anketa;
 
-            Console.WriteLine("Ведите число которое необходимовозвети в степень:");
-            N = int.Parse(Console.ReadLine());
+            Anketa = Program.GetAnketa();
 
-            Console.WriteLine("Введите степень, в которое необходимо возвести число(не более 255):");
-            pow = byte.Parse(Console.ReadLine());
-
-            Console.WriteLine(Program.PowerUp(N, pow));
-            Console.ReadLine();
+            return;
         }
 
-        private static int PowerUp(int N, byte pow)
+        static (string name, string family, int age, bool isHavePet,
+                 int petCount, string[] petsNames, string[] colors) GetAnketa()
         {
-            int res = 1;
-            if (pow > 1)
+            string name = "";
+            string family = "";
+            int age = 0;
+            bool isHavePet = false;
+            int petCount = 0;
+            string[] petsNames = new string[0];
+            string[] colors = new string[0];
+
+            Console.WriteLine("Введите ваше имя:");
+            name = Console.ReadLine();
+
+            Console.WriteLine("Введите вашу фамилию:");
+            family = Console.ReadLine();
+
+            string ageR;
+            Console.WriteLine("Введите ваш возраст:");
+            do
             {
-                res = N * Program.PowerUp(N, (byte)(pow-1));
-            }
-            else if (pow == 1)
+                ageR = Console.ReadLine();
+            } while (Program.CheckInt(ageR, out age));
+
+            Console.WriteLine("Есть ли у вас питомец/питомцы (да/нет):");
+            string answer = "";
+            answer = Console.ReadLine();
+            if (answer.ToLower() == "да")
+                isHavePet = true;
+            else
+                isHavePet = false;
+
+            if (isHavePet)
             {
-                res = N;
+                Console.WriteLine("Сколько у вас питомцев?");
+                petCount = int.Parse(Console.ReadLine());
+
+                petsNames = new string[petCount];
+                Console.WriteLine("Введите имена питомцев.");
+                for (int i = 0; i < petCount; i++)
+                {
+                    Console.WriteLine("Имя питомца {0}", i + 1);
+                    petsNames[i] = Console.ReadLine();
+                }
             }
 
-            return res;
+            return (name, family, age, isHavePet,
+                petCount, petsNames, colors);
+
+        }
+
+        static bool CheckInt(string inputParam, out int corrNumber)
+        {
+            int intNum;
+            
+            if (int.TryParse(inputParam, out intNum))
+            {
+                if (intNum > 0)
+                {
+                    corrNumber = intNum;
+                    return true;
+                }
+            }
+
+            corrNumber = 0;
+            return false;
         }
     }
 }
