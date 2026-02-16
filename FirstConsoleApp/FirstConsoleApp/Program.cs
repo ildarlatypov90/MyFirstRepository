@@ -6,15 +6,20 @@
         {
             static void Main(string[] args)
             {
-                Console.WriteLine("Напишите что-то");
-                var str = Console.ReadLine();
-
-                Console.WriteLine("Укажите глубину эха");
-                var deep = int.Parse(Console.ReadLine());
-
-                Echo(str, deep);
-
+                Console.WriteLine(Factorial(20));
                 Console.ReadKey();
+            }
+
+            static decimal Factorial(int x)
+            {
+                if (x == 0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return x * Factorial(x - 1);
+                }
             }
 
             static void Echo(string phrase, int deep)
