@@ -12,8 +12,6 @@
             Program.ShowAnketa(Anketa);
 
             Console.ReadKey();
-
-            return;
         }
 
         static (string name, string family, int age, bool isHavePet,
@@ -40,13 +38,15 @@
                 ageR = Console.ReadLine();
             } while (!Program.CheckInt(ageR, out age));
 
-            Console.WriteLine("Есть ли у вас питомец/питомцы (да/нет):");
             string answer = "";
-            answer = Console.ReadLine();
-            if (answer.ToLower() == "да")
-                isHavePet = true;
-            else
-                isHavePet = false;
+            do
+            {
+
+                Console.WriteLine("Есть ли у вас питомец/питомцы (да/нет):");
+                answer = Console.ReadLine().ToLower();
+                if (answer == "да")
+                    isHavePet = true;
+            } while (answer!="да" && answer != "нет");
 
             if (isHavePet)
             {
